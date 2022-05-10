@@ -16,7 +16,6 @@ namespace ApiProject.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class TenancyController : ControllerBase
     {
