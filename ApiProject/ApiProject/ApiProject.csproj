@@ -18,6 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Model\Result\Response\" />
+    <Folder Include="Model\Result\Request\" />
     <Folder Include="Service\" />
     <Folder Include="Service\" />
   </ItemGroup>
