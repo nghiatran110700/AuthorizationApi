@@ -34,7 +34,7 @@ namespace ApiProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<JwtConfig>(Configuration.GetSection("JwtConfig"));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<NccData>();
             services.AddDbContext<NccData>(options => options.UseSqlServer(Configuration.GetConnectionString("NccDatabase")));
             services.AddControllers();
