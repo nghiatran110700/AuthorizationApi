@@ -31,5 +31,18 @@ namespace ApiProject.Controllers
             var lst = await _context.Tenancy.ToListAsync();
             return Ok(lst);
         }
+        [HttpPost]
+        [Route("createTenancy")]
+        public async Task<ActionResult> CreateTenancy([FromBody] Tenancy tenacy)
+        {
+            if (tenacy != null && string.IsNullOrWhiteSpace(tenacy.TenancyName))
+            {
+                tenacy.TenancyK = Guid.NewGuid();
+                _context.Tenancy.Add(tenacy);
+                await _context.SaveChangesAsync();
+                return Ok("Create success");
+            }
+            return BadRequest("create fails");
+        }
     }
 }
