@@ -44,5 +44,17 @@ namespace ApiProject.Controllers
             }
             return BadRequest("create fails");
         }
+        [HttpDelete]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var tenancy = _context.Tenancy.Find(id);
+            if(tenancy == null)
+            {
+                return BadRequest("not found tenancy");
+            }
+            _context.Tenancy.Remove(tenancy);
+            await _context.SaveChangesAsync();
+            return Ok("Delete success");
+        }
     }
 }
